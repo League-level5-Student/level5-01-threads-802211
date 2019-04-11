@@ -6,10 +6,7 @@ import javax.swing.JOptionPane;
 
 import org.jointheleague.graphical.robot.Robot;
 
-public class AdvancedRobotRace {
-	// Re-do the robot race recipe from level 3 module 0. 
-	// This time, use threads to make all of the robots go at the same time.
-
+public class RobotRaceOriginal {
 
 		//1. make a main method
 		public static void main(String[] args) {
@@ -28,36 +25,18 @@ public class AdvancedRobotRace {
 		    //   a random amount less than 50.
 	   
 			//6. use a while loop to repeat step 5 until a robot has reached the top of the screen.
-	  Boolean top = false;
+	    	boolean top = false;
 	    	while(top == false) {
-	    		
 	    		for(int x = 0; x<a.length; x++) {
 	    			if(a[x].getY() <= 0) {
 	    				top = true;
 	    				int robotNum = 5-x;
 	    				JOptionPane.showMessageDialog(null, "robot #" + robotNum + " is the winner");
 	    			}
-	    		} 
-	    		
+	    		} 	for(int j = 0; j < a.length; j++) {
 	    		int r = new Random().nextInt(50);
-	    		int r1 = new Random().nextInt(50);
-	    		int r2 = new Random().nextInt(50);
-	    		int r3 = new Random().nextInt(50);
-	    		int r4 = new Random().nextInt(50);
-	    		
-	    		Thread t = new Thread(()->a[0].move(r));
-	    		Thread t1 = new Thread(()->a[1].move(r1));
-	    		Thread t2 = new Thread(()->a[2].move(r2));
-	    		Thread t3 = new Thread(()->a[3].move(r3));
-	    		Thread t4 = new Thread(()->a[4].move(r4));
-	    		
-	    		t.start();
-	    		t1.start();
-	    		t2.start();
-	    		t3.start();
-	    		t4.start();
-	    	
-	    	
+	    		a[j].move(r);
+	    	}
 	    	}
 			//7. declare that robot the winner and throw it a party!
 	    	
