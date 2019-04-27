@@ -30,8 +30,10 @@ public class SynchronizedSwimming {
 	
 	private static void swimLap(Swimmer swimmer) throws InterruptedException {
 		System.out.println(swimmer.name + " started a lap!");
-		Thread.holdsLock(swimmingPool);
-		Thread.sleep(2000);
+		synchronized (swimmingPool) {
+			Thread.holdsLock(swimmingPool);
+			Thread.sleep(2000);
+		}
 		System.out.println(swimmer.name + " finished!");
 	
 	}
